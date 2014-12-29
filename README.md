@@ -20,3 +20,6 @@ is made available under the CC-BY-SA 3.0, GPL 3.0, and GPL 2.0 licenses.
 
 Rich Guilmain
 richguilmain@gmail.com
+
+Thomas DeRensis
+tderensis@gmail.com
