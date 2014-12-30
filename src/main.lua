@@ -4,7 +4,7 @@ function love.load()
     sheep_hex = love.graphics.newImage(tileset .. "sheep.gif")
 
     -- h is the distance (in pixels) from the bottom of the tile image to the
-    -- bottom of the leftmost or rightmost edge of the hex
+    -- bottom of the leftmost or rightmost edge of the hex.
     tile_h = 16
 
     map_num_cols = 14
