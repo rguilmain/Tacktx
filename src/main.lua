@@ -1,4 +1,6 @@
 function love.load()
+    love.window.setTitle("Tacktx")
+
     -- Load our hex images.
     tileset = "tilesets/flat_left_right/"
     sheep_hex = love.graphics.newImage(tileset .. "sheep.gif")
