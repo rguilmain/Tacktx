@@ -7,9 +7,9 @@ function love.load()
   love.window.setTitle("Tacktx")
   love.window.setMode(1000, 750, {resizable=true})
 
-  test_layer = require 'test_layer'
+  map = require 'layers.middle_earth'
 end
 
 function love.draw()
-  test_layer:draw()
+  map:draw()
 end
