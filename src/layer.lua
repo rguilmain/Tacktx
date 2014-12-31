@@ -20,8 +20,8 @@ function HexTileLayer:draw()
     for icol,index in ipairs(row) do
       if index > 0 then
         -- If we're in an odd row, offset the x value by half a tile width.
-        local x = (icol - 1 + (irow % 2) * 0.5) * self.tile_width
-        local y = (irow - 1) * (self.tile_height - offset)
+        local x = (icol - (irow % 2) * 0.5) * self.tile_width
+        local y = irow * (self.tile_height - offset)
         love.graphics.draw(self.tile_images[index], x, y)
       end
     end
