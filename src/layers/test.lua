@@ -32,5 +32,4 @@ clay_hex = love.graphics.newImage(tileset .. "clay.gif")
 
 tile_images = ({sheep_hex, water_hex, clay_hex})
 
-l = HexTileLayer:new(layer, tile_images)
-return l
+return HexTileLayer:new(layer, tile_images)
