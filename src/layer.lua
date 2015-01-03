@@ -1,7 +1,7 @@
 -- A tiled layer on the game map
 
 local class = require 'middleclass'
-
+local geom = require 'util.geometry'
 local HexTileLayer = class('HexTileLayer')
 
 function HexTileLayer:initialize(tiles, tile_images)
@@ -29,42 +29,30 @@ function HexTileLayer:draw()
 end
 
 function HexTileLayer:getTileIndexFromPoint(x, y)
-   -- first assume we are in the center rectangle region of the hex tile
-   -- TODO: remove magic numbers
-  local row = math.floor(y/48) + 1
-  if row%2 == 1 then
-    col = math.floor(x/55) + 1
-  else
-    col = math.floor((x-(55/2))/55) + 1
-  end
-
-  local in_center = (y%48 >= 17)
+  -- first assume we are in the center rectangle region of the hex tile
+  local row = math.floor(y/(self.tile_height * (3/4))) + 1
+  local col = math.floor(x/self.tile_width - ((row-1)%2)/2) + 1
+  local in_center = (y%(self.tile_height*(3/4)) > self.tile_height*(1/4))
 
   if not in_center then
-    local q = math.floor(x/(55/2)) + 1
+    local q = math.floor(x/(self.tile_width/2)) + 1  -- hex quadrant
+    local x1 = math.floor((q-1) * self.tile_width/2)
+    local x2 = x1 + (self.tile_width/2)
     if (row%2 == 1 and q%2 == 1) or (row%2 == 0 and q%2 == 0) then
-      -- use cross product
-      local x1 = math.floor((q-1)*55/2)
-      local y1 = row*48 - 32
-      local x2 = x1 + (55/2)
-      local y2 = y1 - 16
-      local v1 = {x2-x1, y2-y1}
-      local v2 = {x2-x, y2-y}
-      local xp = v1[1]*v2[2] - v1[2]*v2[1]
+      -- we are in a section with positive slope
+      local y1 = (1/2) * self.tile_height * (row*(3/2) - 1)
+      local y2 = y1 - self.tile_height * (1/4)
+      local xp = geom:crossProduct({x1, y1}, {x2, y2}, {x, y})
       -- we are actually on the row above
       if xp > 0 then
         if row%2 == 1 then col = col - 1 end
         row = row - 1
       end
     else
-      -- use cross product
-      local x1 = math.floor((q-1)*55/2)
-      local y1 = (row-1)*48
-      local x2 = x1 + (55/2)
-      local y2 = y1 + 16
-      local v1 = {x2-x1, y2-y1}
-      local v2 = {x2-x, y2-y}
-      local xp = v1[1]*v2[2] - v1[2]*v2[1]
+      -- we are in a section with negative slope
+      local y1 = (row-1) * self.tile_height * (3/4)
+      local y2 = y1 + self.tile_height * (1/4)
+      local xp = geom:crossProduct({x1, y1}, {x2, y2}, {x, y})
       -- we are actually on the row above
       if xp > 0 then
         if row%2 == 0 then col = col + 1 end
