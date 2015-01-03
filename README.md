@@ -23,3 +23,6 @@ richguilmain@gmail.com
 
 Thomas DeRensis
 tderensis@gmail.com
+
+Tim Bertram
+timothy.a.bertram@gmail.com
