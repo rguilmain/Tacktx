@@ -75,4 +75,10 @@ function HexTileLayer:getTileIndexFromPoint(x, y)
   return row, col
 end
 
+function HexTileLayer:getTileCenterFromIndex(row, col)
+  local y = (1/4) * self.tile_height * (row * 3 - 1)
+  local x = self.tile_width * (col - (row%2)/2)
+  return x, y
+end
+
 return HexTileLayer

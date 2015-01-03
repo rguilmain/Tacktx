@@ -24,12 +24,6 @@ function love.mousereleased(x, y, button)
     row, col = map:getTileIndexFromPoint(x, y)
     print("At: " .. row .. ", " .. col)
 
-    -- set tile center, hard coded for now
-    by = row*48 - 16
-    if row%2 == 1 then
-      bx = col*55 - 55/2
-    else
-      bx = col*55
-    end
+    bx, by = map:getTileCenterFromIndex(row, col)
   end
 end
