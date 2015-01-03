@@ -14,22 +14,22 @@ function love.load()
 end
 
 function love.draw()
-   map:draw()
-   love.graphics.setColor(255,255,255)
-   love.graphics.circle("fill", bx, by, 20, 20)
+  map:draw()
+  love.graphics.setColor(255,255,255)
+  love.graphics.circle("fill", bx, by, 20, 20)
 end
 
 function love.mousereleased(x, y, button)
-   if button == 'l' then
-     row, col = map:getTileIndexFromPoint(x, y)
-     print("At: " .. row .. ", " .. col)
+  if button == 'l' then
+    row, col = map:getTileIndexFromPoint(x, y)
+    print("At: " .. row .. ", " .. col)
 
-     -- set tile center, hard coded for now
-     by = row*48 - 16
-     if row%2 == 1 then
-        bx = col*55 - 55/2
-     else
-        bx = col*55
-     end
+    -- set tile center, hard coded for now
+    by = row*48 - 16
+    if row%2 == 1 then
+      bx = col*55 - 55/2
+    else
+      bx = col*55
+    end
   end
 end
