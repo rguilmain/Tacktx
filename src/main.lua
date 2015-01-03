@@ -19,14 +19,14 @@ function love.load()
 end
 
 function love.draw()
-  love.graphics.setColor(255, 255, 255)
+  love.graphics.setColor(255, 255, 255, 255)
   map:draw()
   if left_button_clicked then
-     love.graphics.setColor(255, 255, 255)
+     love.graphics.setColor(0, 0, 255, 200)
      love.graphics.circle("fill", x_left, y_left, 20, 20)
   end
   if right_button_clicked then
-     love.graphics.setColor(255, 0, 255)
+     love.graphics.setColor(255, 0, 0, 200)
      love.graphics.circle("fill", x_right, y_right, 20, 20)
   end
 end
