@@ -17,6 +17,8 @@ function love.load()
   x_right = 0
   y_right = 0
   right_button_clicked = false
+
+  love.keyboard.setKeyRepeat(true)
 end
 
 function love.draw()
@@ -58,5 +60,19 @@ function love.mousepressed(x, y, button)
     camera:scale(1.1)
   elseif button == "wd" then
     camera:scale(0.9)
+  end
+end
+
+function love.keypressed(key, isrepeat)
+  -- TODO: Combine with love.keyreleased to implement diagonal scrolling
+  translate_amount = 20
+  if key == 'up' then
+     camera:move(0, -translate_amount)
+  elseif key == 'down' then
+     camera:move(0, translate_amount)
+  elseif key == 'left' then
+     camera:move(-translate_amount, 0)
+  elseif key == 'right' then
+     camera:move(translate_amount, 0)
   end
 end
