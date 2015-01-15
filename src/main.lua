@@ -57,8 +57,10 @@ end
 
 function love.mousepressed(x, y, button)
   if button == "wu" then
+    -- zoom into the world
     camera:scale(1.1)
   elseif button == "wd" then
+    -- zoom out of the world
     camera:scale(0.9)
   end
 end
