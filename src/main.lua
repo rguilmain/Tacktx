@@ -2,7 +2,7 @@ function love.load()
   love.window.setTitle("Tacktx")
   love.window.setMode(1000, 750, {resizable=true})
 
-  map = require 'layers.middle_earth'
+  map = require 'assets.maps.middle_earth'
   camera = require 'camera'
 
   x_left = 0

@@ -15,7 +15,7 @@ layer =
 }
 
 -- Load our hex images.
-local tileset = "tilesets/flat_left_right/"
+local tileset = "assets/graphics/tilesets/flat_left_right/"
 sheep_hex = love.graphics.newImage(tileset .. "sheep.gif")
 water_hex = love.graphics.newImage(tileset .. "water.gif")
 wood_hex = love.graphics.newImage(tileset .. "wood.gif")
