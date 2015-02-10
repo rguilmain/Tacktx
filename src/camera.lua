@@ -1,5 +1,5 @@
 
-local class = require 'middleclass'
+local class = require 'third_party.middleclass.middleclass'
 
 local Camera = class('Camera')
 

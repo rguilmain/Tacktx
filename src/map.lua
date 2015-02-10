@@ -1,6 +1,6 @@
 -- A map with layers... like an onion
 
-local class = require 'middleclass'
+local class = require 'third_party.middleclass.middleclass'
 
 local Map = class('Map')
 
