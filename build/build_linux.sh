@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo -n "Installing Tacktx to dist directory ... "
+
 if [ ! -d dist ]; then
     mkdir dist
 fi
@@ -9,5 +11,8 @@ zip -9 -q -r Tacktx.love .
 cp -r * ../build/dist
 rm Tacktx.love  # remove binary .love file from src
 
-echo "Tacktx installed to dist/Tacktx.love"
-echo "To run: love Tacktx"
+echo "DONE"
+echo ""
+echo "To run:"
+echo "  cd dist"
+echo "  love Tacktx.love"
