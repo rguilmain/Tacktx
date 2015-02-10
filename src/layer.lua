@@ -1,6 +1,6 @@
 -- A tiled layer on the game map
 
-local class = require 'middleclass'
+local class = require 'third_party.middleclass.middleclass'
 local geom = require 'util.geometry'
 local HexTileLayer = class('HexTileLayer')
 
