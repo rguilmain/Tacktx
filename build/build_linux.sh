@@ -4,9 +4,9 @@ if [ ! -d dist ]; then
     mkdir dist
 fi
 
-cd src
+cd ../src
 zip -9 -q -r Tacktx.love .
-cp -r * ../Tacktx
+cp -r * ../build/dist
 rm Tacktx.love  # remove binary .love file from src
 
 echo "Tacktx installed to dist/Tacktx.love"
