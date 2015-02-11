@@ -1,9 +1,3 @@
--- This is the entry point for Tacktx developed in love2d
-
--- Tell lua where to find our libraries
-package.path = package.path ..
-  ";./third_party/middleclass/?.lua"
-
 function love.load()
   love.window.setTitle("Tacktx")
   love.window.setMode(1000, 500, {resizable=true})
