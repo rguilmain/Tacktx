@@ -23,12 +23,18 @@ end
 
 -- Add a scene to the manager with the given identifier and scene path.
 function scene_manager:add_scene(identifier, scene_path)
-  print (identifier, scene_path)
   local scene = require('scenes.' .. scene_path)
   if scene ~= nil then
+    -- assume we received a scene in the scenes directory
     self.scenes[identifier] = 'scenes.' .. scene_path
   else
-    print('Error: Scene ' .. scene_path .. ' not found in the lua path.')
+    -- maybe the scene path is in the lua path
+    scene = require(scene_path)
+    if scene ~= nil then
+      self.scenes[identifier] = scene_path
+    else
+      print('Error: Scene ' .. scene_path .. ' not found in the lua path.')
+    end
   end
 end
 
