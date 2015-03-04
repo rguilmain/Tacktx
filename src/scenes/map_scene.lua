@@ -59,12 +59,18 @@ function map_scene:process_mouse_release(x, y, button)
 end
 
 function map_scene:process_mouse_press(x, y, button)
+  local scale = nil
   if button == "wu" then
-    -- zoom into the world
-    self.camera:scale(1.1)
+    scale = 1.2
   elseif button == "wd" then
-    -- zoom out of the world
-    self.camera:scale(0.9)
+    scale = 0.8
+  end
+
+  if scale ~= nil then
+    x_w1, y_w1 = self.camera:cursorToWorld(x, y)
+    self.camera:scale(scale)
+    x_w2, y_w2 = self.camera:cursorToWorld(x, y)
+    self.camera:move(x_w1 - x_w2, y_w1 - y_w2)
   end
 end
 
