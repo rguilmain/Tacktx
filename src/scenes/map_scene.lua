@@ -67,6 +67,8 @@ function map_scene:process_mouse_press(x, y, button)
   end
 
   if scale ~= nil then
+    -- Zoom into mouse by ensuring that the cursor remains on the same world
+    -- coordinate after scaling.
     x_w1, y_w1 = self.camera:cursorToWorld(x, y)
     self.camera:scale(scale)
     x_w2, y_w2 = self.camera:cursorToWorld(x, y)
