@@ -18,6 +18,10 @@ function map_scene:initialize(manager)
   self.x_right = 0
   self.y_right = 0
   self.right_button_clicked = false
+
+  self.x_middle = 0
+  self.y_middle = 0
+  self.middle_button_clicked = false
 end
 
 function map_scene:set_map(map)
@@ -39,6 +43,14 @@ function map_scene:draw()
   self.camera:unset()
 end
 
+function map_scene:update(dt)
+  local x, y = love.mouse.getPosition()
+  if love.mouse.isDown("m") then
+    local sensitivity_ignore = 15
+    self.camera:move((x - self.x_middle)/-sensitivity_ignore, (y - self.y_middle)/-sensitivity_ignore)
+  end
+end
+
 function map_scene:process_mouse_release(x, y, button)
   -- convert our click to world coordinates and calculate tile index
   wx, wy = self.camera:cursorToWorld(x, y)
@@ -55,6 +67,8 @@ function map_scene:process_mouse_release(x, y, button)
     end
     x_right, y_right = self.map:getTileCenterFromIndex(row, col)
     right_button_clicked = true
+  elseif button == 'm' then
+    self.middle_button_clicked = false
   end
 end
 
@@ -73,6 +87,12 @@ function map_scene:process_mouse_press(x, y, button)
     self.camera:scale(scale)
     x_w2, y_w2 = self.camera:cursorToWorld(x, y)
     self.camera:move(x_w1 - x_w2, y_w1 - y_w2)
+  end
+
+  if button == "m" then
+    self.middle_button_clicked = true
+    self.x_middle = x
+    self.y_middle = y
   end
 end
 

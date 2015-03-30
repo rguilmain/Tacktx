@@ -29,6 +29,10 @@ function title_scene:draw()
   end
 end
 
+function title_scene:update(dt)
+
+end
+
 function title_scene:draw_title()
   width, height = love.graphics.getDimensions()
   love.graphics.setBackgroundColor(0, 0, 70)
