@@ -61,6 +61,15 @@ function scene_manager:draw_scene()
   end
 end
 
+-- Update current scene set by set_scene()
+function scene_manager:update_scene(dt)
+  if self.current_scene_object ~= nil then
+    self.current_scene_object:update(dt)
+  else
+    print('Error: No scene set! Set a scene using set_scene(identifier).')
+  end
+end
+
 function scene_manager:process_mouse_release(x, y, button)
   -- Just pass it onto the scene for now
   self.current_scene_object:process_mouse_release(x, y, button)

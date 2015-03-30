@@ -13,6 +13,10 @@ function love.draw()
   scene_manager:draw_scene()
 end
 
+function love.update(dt)
+  scene_manager:update_scene(dt)
+end
+
 function love.mousereleased(x, y, button)
   scene_manager:process_mouse_release(x, y, button)
 end
